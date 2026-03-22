@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - Prince Kumar Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="dashboard-brand">
+                    <i class="fas fa-chart-line"></i>
+                    <h1>Analytics Dashboard</h1>
+                </div>
+                <a href="index.html" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-arrow-left"></i> Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Main Content -->
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Summary Cards -->
+            <div class="dashboard-section">
+                <h2 class="section-title">Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Page Views</h3>
+                            <p class="stat-value" id="totalViews">0</p>
+                            <span class="stat-label">All time</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Unique Visitors</h3>
+                            <p class="stat-value" id="uniqueVisitors">0</p>
+                            <span class="stat-label">Last 100 tracked</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Last Visit</h3>
+                            <p class="stat-value" id="lastVisit">-</p>
+                            <span class="stat-label">Most recent</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Referrers</h3>
+                            <p class="stat-value" id="uniqueReferrers">0</p>
+                            <span class="stat-label">Different sources</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="dashboard-section">
+                <h2 class="section-title">Traffic Analytics</h2>
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Visitors Over Time</h3>
+                        <canvas id="visitorsChart"></canvas>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Device Types</h3>
+                        <canvas id="deviceChart"></canvas>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Traffic Sources</h3>
+                        <canvas id="referrerChart"></canvas>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Browser Distribution</h3>
+                        <canvas id="browserChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visitor Details Table -->
+            <div class="dashboard-section">
+                <h2 class="section-title">Recent Visitors</h2>
+                <div class="table-container">
+                    <table class="visitors-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Device</th>
+                                <th>Browser</th>
+                                <th>Screen Size</th>
+                                <th>Language</th>
+                                <th>Referrer</th>
+                            </tr>
+                        </thead>
+                        <tbody id="visitorsTableBody">
+                            <tr>
+                                <td colspan="6" class="no-data">No visitor data available yet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Google Analytics Integration Info -->
+            <div class="dashboard-section">
+                <h2 class="section-title">Google Analytics Integration</h2>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Setup Instructions</h3>
+                        <ol>
+                            <li>Create a Google Analytics 4 property at <a href="https://analytics.google.com" target="_blank">analytics.google.com</a></li>
+                            <li>Get your Measurement ID (format: G-XXXXXXXXXX)</li>
+                            <li>Replace 'G-XXXXXXXXXX' in both index.html and dashboard.html with your actual ID</li>
+                            <li>Deploy your website and wait 24-48 hours for data to appear in Google Analytics</li>
+                            <li>Access detailed reports including real-time traffic, demographics, and user behavior</li>
+                        </ol>
+                        <div class="info-features">
+                            <h4>What Google Analytics Tracks:</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Real-time active users</li>
+                                <li><i class="fas fa-check"></i> Geographic location of visitors</li>
+                                <li><i class="fas fa-check"></i> User demographics and interests</li>
+                                <li><i class="fas fa-check"></i> Page views and session duration</li>
+                                <li><i class="fas fa-check"></i> Traffic sources and campaigns</li>
+                                <li><i class="fas fa-check"></i> Device and browser information</li>
+                                <li><i class="fas fa-check"></i> User flow and behavior patterns</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Local Storage Info -->
+            <div class="dashboard-section">
+                <div class="info-card">
+                    <div class="info-icon warning">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>About This Dashboard</h3>
+                        <p>
+                            This dashboard uses <strong>localStorage</strong> to track basic visitor information on the client side.
+                            It's limited to the last 100 visitors and data stored in your browser. For comprehensive analytics,
+                            including cross-device tracking, conversion metrics, and advanced reporting, use Google Analytics.
+                        </p>
+                        <div class="dashboard-actions">
+                            <button class="btn btn-secondary" id="exportData">
+                                <i class="fas fa-download"></i> Export Data
+                            </button>
+                            <button class="btn btn-secondary" id="clearData">
+                                <i class="fas fa-trash"></i> Clear Data
+                            </button>
+                            <button class="btn btn-primary" id="refreshData">
+                                <i class="fas fa-sync"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2026 Prince Kumar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
